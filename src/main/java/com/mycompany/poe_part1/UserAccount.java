@@ -44,6 +44,7 @@ public class UserAccount {
 
     public String getFullName() {
         return firstName + " " + lastName;
+        
     }
 }
 
