@@ -71,7 +71,7 @@ public class POE_Part1 {
         String loginPassword = sc.next();
 
         // Verify the information entered
-        if (userAccount.login(loginUsername, loginPassword)) {
+        if (userAccount.loginUser(loginUsername, loginPassword)) {
             System.out.println("Welcome " + userAccount.getFullName() + ", it is great to see you again.");
         } else {
             System.out.println("Username or password incorrect, please try again.");

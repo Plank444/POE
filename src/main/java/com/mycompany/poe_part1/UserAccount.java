@@ -37,7 +37,8 @@ public class UserAccount {
         return "User registered successfully.";
     }
 
-    public boolean login(String username, String password) {
+    // Ensures the login details matches the ones stored when a user registers
+    public boolean loginUser(String username, String password) {
         return this.username != null && this.username.equals(username) && this.password.equals(password);
     }
 
