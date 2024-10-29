@@ -16,16 +16,16 @@ public class POE_Part1 {
         
         int taskLimit;
         while (true) {
-            String taskLimitInput = JOptionPane.showInputDialog("How many tasks would you like to add?");
+            String taskLimitInput = JOptionPane.showInputDialog("Input number of tasks you would like to add?");
             try {
                 taskLimit = Integer.parseInt(taskLimitInput);
                 if (taskLimit > 0) {
-                    break; // Exit the loop if a valid number is entered
+                    break; 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter a positive number.");
+                    JOptionPane.showMessageDialog(null, "Enter number: ");
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.");
+                JOptionPane.showMessageDialog(null, "Please re-enter a number.");
             }
         }
 
