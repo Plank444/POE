@@ -13,6 +13,23 @@ import java.util.Scanner;
 public class POE_Part1 {
 
     public static void main(String[] args) {
+        
+        int taskLimit;
+        while (true) {
+            String taskLimitInput = JOptionPane.showInputDialog("How many tasks would you like to add?");
+            try {
+                taskLimit = Integer.parseInt(taskLimitInput);
+                if (taskLimit > 0) {
+                    break; // Exit the loop if a valid number is entered
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a positive number.");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.");
+            }
+        }
+
+        
         //Declarations
         String username;
         String password;
@@ -93,7 +110,7 @@ public class POE_Part1 {
         } else {
             System.out.println("Username or password incorrect, please try again.");
         }
-        
+        //EasyKanban.Menu();
         }
         
 
