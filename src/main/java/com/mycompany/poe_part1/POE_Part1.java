@@ -3,7 +3,7 @@
  */
 
 package com.mycompany.poe_part1;
-import javax.swing.JOptionPane;
+
 import java.util.Scanner;
 
 /**
@@ -62,40 +62,20 @@ public class POE_Part1 {
         // enter the users information so that the user is able to login
         String registrationMessage = userAccount.registerUser(username, password, firstName, lastName);
         System.out.println(registrationMessage);
-        /*
-        boolean loginSuccess = false;
-        int attempts = 0;
-        
-        while (!loginSuccess && attempts < 3){
-            String loginUsername = JOptionPane.showInputDialog("Enter your username to login: ");
-            String loginPassword = JOptionPane.showInputDialog("Enter your password to login: ");
-            
-            if (userAccount.loginUser(loginUsername, loginPassword)){
-                JOptionPane.showMessageDialog(null,"Welcome to EasyKanban");
-                loginSuccess = true;
-            }else{
-                JOptionPane.showMessageDialog(null,"Username or password is invalid.");
-                attempts++;
-            }
-        }
-*/
-        
-       // Prompt the user to login
-        //System.out.print("Enter your username to login: ");
+
+        // Prompt the user to login
+        System.out.print("Enter your username to login: ");
         String loginUsername = sc.next();
 
-        //System.out.print("Enter your password to login: ");
+        System.out.print("Enter your password to login: ");
         String loginPassword = sc.next();
-        
+
         // Verify the information entered
         if (userAccount.loginUser(loginUsername, loginPassword)) {
             System.out.println("Welcome " + userAccount.getFullName() + ", it is great to see you again.");
         } else {
             System.out.println("Username or password incorrect, please try again.");
         }
-        
-        }
-        
-
+    }
 }
 
