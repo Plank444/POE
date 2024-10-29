@@ -5,6 +5,7 @@
 package com.mycompany.poe_part1;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
+import javax.swing.JDialog;
 
 /**
  *
@@ -13,23 +14,8 @@ import java.util.Scanner;
 public class POE_Part1 {
 
     public static void main(String[] args) {
-        
-        int taskLimit;
-        while (true) {
-            String taskLimitInput = JOptionPane.showInputDialog("Input number of tasks you would like to add?");
-            try {
-                taskLimit = Integer.parseInt(taskLimitInput);
-                if (taskLimit > 0) {
-                    break; 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Enter number: ");
-                }
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Please re-enter a number.");
-            }
-        }
-
-        
+      final JDialog j = new JDialog();
+      j.setAlwaysOnTop(true);
         //Declarations
         String username;
         String password;
@@ -40,9 +26,9 @@ public class POE_Part1 {
         Scanner sc = new Scanner(System.in);
         
         //Object of the UserValidator, PasswordValidator and UserAccount classes
-        UsernameValidator usernameValidator = new UsernameValidator();
-        PasswordValidator passwordValidator = new PasswordValidator();
-        UserAccount userAccount = new UserAccount();
+        //UsernameValidator usernameValidator = new UsernameValidator();
+        Login login = new Login();
+        //UserAccount userAccount = new UserAccount();
         //EasyKanban easyKanban = new EasyKanban(taskLimit);
         
          // Prompt for username
@@ -60,7 +46,7 @@ public class POE_Part1 {
         lastName = sc.next();
 
           // Validate username
-        if (usernameValidator.checkUserName(username)) {
+        if (login.checkUserName(username)) {
             System.out.println("Username successfully captured.");
         } else {
             System.out.println("Username is not correctly formatted, please ensure that your username contains an underscore and is no more than 5 characters in length.");
@@ -68,7 +54,7 @@ public class POE_Part1 {
         }
         
          // Validate password
-        if (passwordValidator.checkPasswordComplexity(password)) {
+        if (login.checkPasswordComplexity(password)) {
             System.out.println("Password successfully captured.");
         } else {
             System.out.println("Password is not correctly formatted, please ensure that the password contains at least 8 characters, a capital letter, a number, and a special character.");
@@ -78,42 +64,41 @@ public class POE_Part1 {
         System.out.println("Account created successfully for " + firstName + " " + lastName + ".");
         
         // enter the users information so that the user is able to login
-        String registrationMessage = userAccount.registerUser(username, password, firstName, lastName);
+        String registrationMessage = login.registerUser(username, password, firstName, lastName);
         System.out.println(registrationMessage);
-        /*
-        boolean loginSuccess = false;
-        int attempts = 0;
-        
-        while (!loginSuccess && attempts < 3){
-            String loginUsername = JOptionPane.showInputDialog("Enter your username to login: ");
-            String loginPassword = JOptionPane.showInputDialog("Enter your password to login: ");
-            
-            if (userAccount.loginUser(loginUsername, loginPassword)){
-                JOptionPane.showMessageDialog(null,"Welcome to EasyKanban");
-                loginSuccess = true;
-            }else{
-                JOptionPane.showMessageDialog(null,"Username or password is invalid.");
-                attempts++;
-            }
-        }
-*/
-        
-       // Prompt the user to login
-        //System.out.print("Enter your username to login: ");
+
+        // Prompt the user to login
+        System.out.print("Enter your username to login: ");
         String loginUsername = sc.next();
 
-        //System.out.print("Enter your password to login: ");
+        System.out.print("Enter your password to login: ");
         String loginPassword = sc.next();
         
         // Verify the information entered
-        if (userAccount.loginUser(loginUsername, loginPassword)) {
-            System.out.println("Welcome " + userAccount.getFullName() + ", it is great to see you again.");
-        } else {
-            System.out.println("Username or password incorrect, please try again.");
-        }
+        boolean loginSuccessfull = login.loginUser(loginUsername, loginPassword);
+        String loginStatus = login.returnLoginStatus(loginSuccessfull);
+        System.out.println(loginStatus);
         //EasyKanban.menu();
-        }
+        
+         if(loginSuccessfull){
+             
+             JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+              Part2 part = new Part2();
+             while (true) {
+            String[] options = {"Add task", "\nShow Report (Coming soon)", "\nQuit"};
+            int option = JOptionPane.showOptionDialog(null, "Select an option", "Main Menu",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            switch (option) {
+                case 0 -> part.addTasks();
+                case 1 -> part.showReport();
+                case 2 -> part.quit();
+            }
+        
+    }
         
 
+}
+    }
 }
 
