@@ -3,15 +3,101 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.poe_part1;
-
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 /**
  *
  * @author RC_Student_lab
  */
 public class Part2 {
+    private boolean isloggedIn;
+    private int maxTasks;
+    private int currentTaskCount = 0;
+    private ArrayList<Task> tasks = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
 
+    public Part2(boolean loggedIn, int maxTasks) {
+        this.isloggedIn = loggedIn;
+        this.maxTasks = maxTasks;
+    }
+
+    public void EasyKanban() {
+        if (isloggedIn) {
+            JOptionPane.showMessageDialog(null, "Welcome to EasyKanban");
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enusre that you're first logged in.");
+        }
+    }
+
+    public void addTasks() {
+        if (!isloggedIn) {
+            JOptionPane.showMessageDialog(null, "Please log in to add tasks.");
+            return;
+        }
+
+        while (currentTaskCount < maxTasks) {
+            String taskName = JOptionPane.showInputDialog("Enter Task Name:");
+            String taskDescription = JOptionPane.showInputDialog("Enter Task Description (Do not enter more than 50 caracters.):");
+
+            //Formatting the length of the Task Description
+            if (taskDescription.length() > 50) {
+                JOptionPane.showMessageDialog(null, "Please enter a task description of less than 50 characters");
+                continue; 
+            }
+
+            String developerFirstName = JOptionPane.showInputDialog("Enter Developer's First Name:");
+            String developerLastName = JOptionPane.showInputDialog("Enter Developer's Last Name:");
+            int taskDuration = Integer.parseInt(JOptionPane.showInputDialog("Enter Task Duration (in hours):"));
+
+            //Generate the TaskID
+            String taskId = generateTaskID(taskName, currentTaskCount, developerLastName);
+
+            String[] options = {"To Do", "Doing", "Done"};
+            String taskStatus = (String) JOptionPane.showInputDialog(null, "Select Task Status:", "Task Status", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+            // Add task to the list
+            tasks.add(new Task(taskName, currentTaskCount, taskDescription, developerFirstName, developerLastName, taskDuration, taskId, taskStatus));
+            currentTaskCount++;
+
+            JOptionPane.showMessageDialog(null, "Task successfully added.");
+        }
+
+        JOptionPane.showMessageDialog(null, "Task entry limit reached.");
+    }
+
+    private String generateTaskID(String taskName, int taskNumber, String developerLastName) {
+        String taskInitials = taskName.length() >= 2 ? taskName.substring(0, 2).toUpperCase() : taskName.toUpperCase();
+        String devLastPart = developerLastName.length() >= 3 ? developerLastName.substring(developerLastName.length() - 3).toUpperCase() : developerLastName.toUpperCase();
+        return taskInitials + ":" + taskNumber + ":" + devLastPart;
+    }
+
+    // Option for showing a report (currently not implemented)
+    public void showReport() {
+        JOptionPane.showMessageDialog(null, "Coming soon");
+    }
+
+    // Quit the application
+    public void quit() {
+        JOptionPane.showMessageDialog(null, "Goodbye!");
+        System.exit(0);
+    }
+
+    public void Menu() {
+        while (true) {
+            String[] options = {"====Menu====", "Show Report (Coming soon)", "Quit"};
+            int option = JOptionPane.showOptionDialog(null, "Select an option", "Main Menu",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            switch (option) {
+                case 0 -> addTasks();
+                case 1 -> showReport();
+                case 2 -> quit();
+            }
+        }
+    }
+}/*      
     public class EasyKanban {
         private boolean isLoggedIn = false; 
         private int taskLimit;             
@@ -91,7 +177,7 @@ public class Part2 {
                 JOptionPane.showMessageDialog(null, "Total hours: " + TotalHours);
                 break;
             }
-        }*/
+        
         }
     }
         if (taskCount >= taskLimit) {
@@ -105,4 +191,5 @@ public class Part2 {
     }
 }
 }
-}
+*/
+
