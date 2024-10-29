@@ -43,6 +43,7 @@ public class POE_Part1 {
         UsernameValidator usernameValidator = new UsernameValidator();
         PasswordValidator passwordValidator = new PasswordValidator();
         UserAccount userAccount = new UserAccount();
+        //EasyKanban easyKanban = new EasyKanban(taskLimit);
         
          // Prompt for username
         System.out.print("Enter your username: ");
@@ -110,7 +111,7 @@ public class POE_Part1 {
         } else {
             System.out.println("Username or password incorrect, please try again.");
         }
-        //EasyKanban.Menu();
+        //EasyKanban.menu();
         }
         
 

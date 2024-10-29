@@ -95,12 +95,12 @@ public class Part2 {
         }
     }
         if (taskCount >= taskLimit) {
-            JOptionPane.showMessageDialog(null, "Task limit reached. You cannot add more tasks.");
-            return; // Stop if the user has reached the task limit
+            JOptionPane.showMessageDialog(null, "You have reached task limit.");
+            return;
         }
 
         String taskDescription = JOptionPane.showInputDialog("Please enter a task description:");
-        taskCount++; // Increment task count each time a task is added
+        taskCount++;
         JOptionPane.showMessageDialog(null, "Task '" + taskDescription + "' has been successfully added.\nYou have added " + taskCount + " out of " + taskLimit + " tasks.");
     }
 }
