@@ -28,6 +28,7 @@ public class POE_Part1 {
         //Object of the UserValidator, PasswordValidator and UserAccount classes
         //UsernameValidator usernameValidator = new UsernameValidator();
         Login login = new Login();
+        Part3 part3 = new Part3();
         //UserAccount userAccount = new UserAccount();
         //EasyKanban easyKanban = new EasyKanban(taskLimit);
         
@@ -94,11 +95,83 @@ public class POE_Part1 {
                 case 1 -> part.showReport();
                 case 2 -> part.quit();
             }
-        
     }
-        
+    }
+         boolean running = true;
 
-}
+        while (running) {
+            // Display a menu
+            System.out.println("Task Management System:");
+            System.out.println("1. Add a new task");
+            System.out.println("2. Display tasks with status 'Done'");
+            System.out.println("3. Display the task with the longest duration");
+            System.out.println("4. Search for a task by name");
+            System.out.println("5. Search for tasks by developer");
+            System.out.println("6. Delete a task by name");
+            System.out.println("7. Display all tasks");
+            System.out.println("8. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1: // Add a new task
+                    System.out.print("Enter Developer Name: ");
+                    String developer = sc.nextLine();
+                    System.out.print("Enter Task Name: ");
+                    String taskName = sc.nextLine();
+                    System.out.print("Enter Task ID: ");
+                    String taskID = sc.nextLine();
+                    System.out.print("Enter Task Duration (in hours): ");
+                    int taskDuration = sc.nextInt();
+                    sc.nextLine(); // Consume newline
+                    System.out.print("Enter Task Status (e.g., Done, In Progress): ");
+                    String taskStatus = sc.nextLine();
+
+                    part3.addTask(developer, taskName, taskID, taskDuration, taskStatus);
+                    System.out.println("Task added successfully!");
+                    break;
+
+                case 2: // Display tasks with status 'Done'
+                    part3.displayTasksWithStatusDone();
+                    break;
+
+                case 3: // Display the task with the longest duration
+                    part3.displayTaskWithLongestDuration();
+                    break;
+
+                case 4: // Search for a task by name
+                    System.out.print("Enter the Task Name to search: ");
+                    String searchName = sc.nextLine();
+                    part3.searchTaskByName(searchName);
+                    break;
+
+                case 5: // Search for tasks by developer
+                    System.out.print("Enter the Developer Name to search tasks for: ");
+                    String searchDeveloper = sc.nextLine();
+                    part3.searchTasksByDeveloper(searchDeveloper);
+                    break;
+
+                case 6: // Delete a task by name
+                    System.out.print("Enter the Task Name to delete: ");
+                    String deleteName = sc.nextLine();
+                    part3.deleteTask(deleteName);
+                    break;
+
+                case 7: // Display all tasks
+                    part3.displayAllTasks();
+                    break;
+
+                case 8: // Exit the program
+                    running = false;
+                    System.out.println("Exiting... Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+        }
     }
 }
 //

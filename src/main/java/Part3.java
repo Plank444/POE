@@ -1,4 +1,3 @@
-package com.mycompany.poe_part1;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,6 +9,7 @@ import java.util.List;
  *
  * @author RC_Student_lab
  */
+/*
 public class Part3 {
     
     // Declaration
@@ -114,4 +114,4 @@ public class Part3 {
         return report.toString();
     }
 }
-
+*/
