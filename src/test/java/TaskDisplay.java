@@ -18,25 +18,19 @@ public class TaskDisplay {
     public void testAddAndRetrieveTasks() {
         Part3 part3 = new Part3();
         
-        // Add test data
         part3.addTask("Mike Smith", "Create Login", "T001", 5, "To Do");
         part3.addTask("Edward Harrison", "Create Add Features", "T002", 8, "Doing");
         part3.addTask("Samantha Paulson", "Create Reports", "T003", 2, "Done");
         part3.addTask("Glenda Oberholzer", "Add Arrays", "T004", 11, "To Do");
 
-        // Test getDevelopers
         assertEquals(List.of("Mike Smith", "Edward Harrison", "Samantha Paulson", "Glenda Oberholzer"), part3.getDevelopers());
         
-        // Test displayTaskWithLongestDuration
         assertEquals("Glenda Oberholzer, 11", part3.displayTaskWithLongestDuration());
         
-        // Test searchTaskByName
         assertEquals("Mike Smith, Create Login", part3.searchTaskByName("Create Login"));
-        
-        // Test searchTasksByDeveloper
+       
         assertEquals("Create Reports", part3.searchTasksByDeveloper("Samantha Paulson"));
         
-        // Test deleteTask
         assertTrue(part3.deleteTask("Create Reports"));
         
         

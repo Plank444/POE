@@ -100,7 +100,7 @@ public class POE_Part1 {
          boolean running = true;
 
         while (running) {
-            // Display a menu
+            //menu
             System.out.println("Task Management System:");
             System.out.println("1. Add a new task");
             System.out.println("2. Display tasks with status 'Done'");
@@ -112,10 +112,10 @@ public class POE_Part1 {
             System.out.println("8. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine();
 
             switch (choice) {
-                case 1: // Add a new task
+                case 1: 
                     System.out.print("Enter Developer Name: ");
                     String developer = sc.nextLine();
                     System.out.print("Enter Task Name: ");
@@ -124,7 +124,7 @@ public class POE_Part1 {
                     String taskID = sc.nextLine();
                     System.out.print("Enter Task Duration (in hours): ");
                     int taskDuration = sc.nextInt();
-                    sc.nextLine(); // Consume newline
+                    sc.nextLine();
                     System.out.print("Enter Task Status (e.g., Done, In Progress): ");
                     String taskStatus = sc.nextLine();
 
@@ -132,37 +132,37 @@ public class POE_Part1 {
                     System.out.println("Task added successfully!");
                     break;
 
-                case 2: // Display tasks with status 'Done'
+                case 2: 
                     part3.displayTasksWithStatusDone();
                     break;
 
-                case 3: // Display the task with the longest duration
+                case 3:
                     part3.displayTaskWithLongestDuration();
                     break;
 
-                case 4: // Search for a task by name
+                case 4:
                     System.out.print("Enter the Task Name to search: ");
                     String searchName = sc.nextLine();
                     part3.searchTaskByName(searchName);
                     break;
 
-                case 5: // Search for tasks by developer
+                case 5: 
                     System.out.print("Enter the Developer Name to search tasks for: ");
                     String searchDeveloper = sc.nextLine();
                     part3.searchTasksByDeveloper(searchDeveloper);
                     break;
 
-                case 6: // Delete a task by name
+                case 6: 
                     System.out.print("Enter the Task Name to delete: ");
                     String deleteName = sc.nextLine();
                     part3.deleteTask(deleteName);
                     break;
 
-                case 7: // Display all tasks
+                case 7: 
                     part3.displayAllTasks();
                     break;
 
-                case 8: // Exit the program
+                case 8: 
                     running = false;
                     System.out.println("Exiting... Goodbye!");
                     break;

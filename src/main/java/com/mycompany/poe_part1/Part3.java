@@ -33,12 +33,12 @@ public class Part3 {
         return developers;
     }
 
-    // Method to get task names list
+    // Method to get a list of the task names 
     public List<String> getNames() {
         return taskNames;
     }
 
-    // Method to display tasks with the status "Done"
+    //Displays done tasks
     public String displayTasksWithStatusDone() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < taskStatuses.size(); i++) {
@@ -51,7 +51,7 @@ public class Part3 {
         return result.toString();
     }
 
-    // Method to find the task with the longest duration
+    //Method to get task duration
     public String displayTaskWithLongestDuration() {
         if (taskDurations.isEmpty()) {
             return "No tasks available.";
@@ -75,7 +75,7 @@ public class Part3 {
         return "Task not found.";
     }
 
-    // Method to search all tasks assigned to a specific developer
+    //Searches tasks assigned to a certain developer
     public String searchTasksByDeveloper(String developer) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < developers.size(); i++) {
@@ -95,13 +95,13 @@ public class Part3 {
                 taskIds.remove(i);
                 taskDurations.remove(i);
                 taskStatuses.remove(i);
-                return true; // Task successfully deleted
+                return true; 
             }
         }
-        return false; // Task not found
+        return false;
     }
 
-    // Method to display all tasks
+    // display all tasks
     public String displayAllTasks() {
         StringBuilder report = new StringBuilder();
         for (int i = 0; i < taskNames.size(); i++) {
